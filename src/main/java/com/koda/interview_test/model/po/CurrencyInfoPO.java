@@ -16,8 +16,8 @@ public class CurrencyInfoPO {
 	@Column(name = "currency_name_zh")
 	private String currencyNameZh;
 	
-	@Column(name = "currency_name_en")
-	private String currencyNameEn;
+	@Column(name = "description")
+	private String description;
 
 	public String getCurrencyCode() {
 		return currencyCode;
@@ -35,11 +35,11 @@ public class CurrencyInfoPO {
 		this.currencyNameZh = currencyNameZh;
 	}
 
-	public String getCurrencyNameEn() {
-		return currencyNameEn;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setCurrencyNameEn(String currencyNameEn) {
-		this.currencyNameEn = currencyNameEn;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }

@@ -6,17 +6,16 @@ public class CurrencyInfoDTO {
 
 	private String currencyNameZh;
 
-	private String currencyNameEn;
+	private String description;
 
 	public CurrencyInfoDTO() {
 		super();
 	}
 
-	public CurrencyInfoDTO(String currencyCode, String currencyNameZh, String currencyNameEn) {
+	public CurrencyInfoDTO(String currencyCode, String currencyNameZh) {
 		super();
 		this.currencyCode = currencyCode;
 		this.currencyNameZh = currencyNameZh;
-		this.currencyNameEn = currencyNameEn;
 	}
 
 	public String getCurrencyCode() {
@@ -35,11 +34,11 @@ public class CurrencyInfoDTO {
 		this.currencyNameZh = currencyNameZh;
 	}
 
-	public String getCurrencyNameEn() {
-		return currencyNameEn;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setCurrencyNameEn(String currencyNameEn) {
-		this.currencyNameEn = currencyNameEn;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }

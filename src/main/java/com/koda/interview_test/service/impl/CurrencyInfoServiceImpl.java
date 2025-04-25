@@ -76,13 +76,14 @@ public class CurrencyInfoServiceImpl implements CurrencyInfoService{
 			
 			po = optional.get();
 			
-			if (dto.getCurrencyNameEn() != null) {
-			    po.setCurrencyNameEn(dto.getCurrencyNameEn());
-			}
-			
 			if (dto.getCurrencyNameZh() != null) {
 			    po.setCurrencyNameZh(dto.getCurrencyNameZh());
 			}
+			
+			if (dto.getDescription() != null) {
+			    po.setDescription(dto.getDescription());
+			}
+			
 			
 			repository.save(po);
 		}
@@ -117,7 +118,6 @@ public class CurrencyInfoServiceImpl implements CurrencyInfoService{
 		Map<String,Object> paramNameMap = new HashMap<String,Object>();
 		paramNameMap.put("currencyCode", dto.getCurrencyCode());
         paramNameMap.put("currencyNameZh", dto.getCurrencyNameZh());
-        paramNameMap.put("currencyNameEn", dto.getCurrencyNameEn());
         
         Specification<CurrencyInfoPO> spec = Util.addSpec(paramNameMap, null);
         Sort sort = Sort.by(Sort.Direction.DESC, "currencyCode");

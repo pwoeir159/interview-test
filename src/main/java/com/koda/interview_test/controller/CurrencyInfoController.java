@@ -80,16 +80,15 @@ public class CurrencyInfoController {
 	@GetMapping
 	public ResponseEntity<Object> getListCurrencyInfo(
 			@RequestParam(value = "currency_code",required = false) String currency_code,
-			@RequestParam(value = "currency_name_zh",required = false) String currency_name_zh,
-			@RequestParam(value = "currency_name_en",required = false) String currency_name_en) {
+			@RequestParam(value = "currency_name_zh",required = false) String currency_name_zh) {
 		
 		try {
 			List<CurrencyInfoDTO> dtoList = 
-					currencyInfoService.getDataList(new CurrencyInfoDTO(currency_name_en, currency_code, currency_code));
+					currencyInfoService.getDataList(new CurrencyInfoDTO(currency_code, currency_name_zh));
 			ApiResponse<Object> apiResponse = this.setOkResponse(dtoList);
 			return ResponseEntity.status(HttpStatus.OK).body(apiResponse);
 		} catch (Exception e) {
-			ApiResponse<Object> apiResponse = this.setInternalServerResponse(e, new CurrencyInfoDTO(currency_name_en, currency_code, currency_code));
+			ApiResponse<Object> apiResponse = this.setInternalServerResponse(e, new CurrencyInfoDTO(currency_code, currency_name_zh));
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(apiResponse);
 		}
 	}
