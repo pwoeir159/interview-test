@@ -16,12 +16,7 @@ public class CoindeskController {
 	private CoindeskService coindeskService;
 
 	@GetMapping
-	public Coindesk getDataOrg() {
-		return coindeskService.getDataOrg();
-	}
-	
-	@GetMapping(value = "/data_new")
-	public Object getDataNew() {
-		return null;
+	public Coindesk getData() {
+		return coindeskService.getData();
 	}
 }
