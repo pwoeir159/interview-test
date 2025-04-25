@@ -8,6 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
@@ -16,6 +17,9 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
+import org.springframework.data.jpa.domain.Specification;
+
+import com.koda.interview_test.model.util.BetweenUtil;
 
 import retrofit2.Call;
 import retrofit2.Response;
@@ -277,6 +281,43 @@ public class Util {
         
         return 500;
     }
+    
+    /**
+     * 2024-06-04.
+     * SQL注入攻擊防範，使用JpaSpec.
+     * by Koda.
+     * 
+     * @param  paramNameMap Map<String,Object>，參數名稱，參數內容
+     * @param  betweenUtil BetweenUtil，如果有使用到時間Between，請使用這物件
+     * @return Specification<T>
+     * */
+   public static <T, E> Specification<T> addSpec(Map<String,Object> paramNameMap, BetweenUtil betweenUtil){
+       
+       Specification<T> spec = Specification.where(null);
+ 
+       for(Map.Entry<String, Object> entry : paramNameMap.entrySet()) {
+           
+           if(entry.getValue() == null) {
+               continue;
+           }
+           
+           spec = spec.and((root, query, builder) -> 
+               root.get(entry.getKey()).in(Arrays.asList(entry.getValue().toString().split(","))));
+       }
+       
+       if(betweenUtil != null) {
+           
+           if("LocalDateTime".equals(betweenUtil.getParamType().toString())) {
+               spec = spec.and((root, query, builder) -> 
+                   builder.between(root.get(betweenUtil.getParamName()), betweenUtil.getStartLocalDateTime(), betweenUtil.getEndLocalDateTime()));
+           }else {
+               spec = spec.and((root, query, builder) -> 
+                   builder.between(root.get(betweenUtil.getParamName()), betweenUtil.getStartLocalDate(), betweenUtil.getEndLocalDate()));
+           }
+       }
+       
+       return spec;
+   }
     
     private static void logInfo(String message, String method) {
         logger.info("{}, method={}",message, method);

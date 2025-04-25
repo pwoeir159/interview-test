@@ -1,4 +1,4 @@
-package com.koda.interview_test.service.impl;
+package com.koda.interview_test.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,7 @@ import com.koda.interview_test.util.Util;
 import retrofit2.Call;
 
 @Service
-public class CoinDeskServiceImpl {
+public class CoinDeskService {
 
 	@Autowired
 	private ICoinDeskService iCoinDeskService;

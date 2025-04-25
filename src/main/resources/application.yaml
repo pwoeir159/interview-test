@@ -11,6 +11,10 @@ spring:
     console:
       path: /h2-console
       enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
 koda:
   interview-test:
     api-kengp3-root-url: 'https://kengp3.github.io/'
