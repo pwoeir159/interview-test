@@ -6,17 +6,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.koda.interview_test.api.model.Coindesk;
-import com.koda.interview_test.service.CoinDeskService;
+import com.koda.interview_test.service.CoindeskService;
 
 @RestController
-@RequestMapping(value = "coin_desk")
-public class CoinDeskController {
+@RequestMapping(value = "/coindesk")
+public class CoindeskController {
 	
 	@Autowired
-	private CoinDeskService coinDeskService;
+	private CoindeskService coindeskService;
 
-	@GetMapping(value = "/data_org")
+	@GetMapping
 	public Coindesk getDataOrg() {
-		return coinDeskService.getDataOrg();
+		return coindeskService.getDataOrg();
+	}
+	
+	@GetMapping(value = "/data_new")
+	public Object getDataNew() {
+		return null;
 	}
 }

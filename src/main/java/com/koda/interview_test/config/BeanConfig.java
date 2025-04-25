@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 
-import com.koda.interview_test.api.ICoinDeskService;
+import com.koda.interview_test.api.ICoindeskService;
 import com.koda.interview_test.util.RetrofitFactory;
 
 
@@ -16,8 +16,8 @@ public class BeanConfig {
     private ServiceConfig serviceConfig;
     
     @Bean
-    public ICoinDeskService iFloodService() {
-        return RetrofitFactory.createService(ICoinDeskService.class, serviceConfig.getApiKengp3RootUrl());   
+    public ICoindeskService iFloodService() {
+        return RetrofitFactory.createService(ICoindeskService.class, serviceConfig.getApiKengp3RootUrl());   
     } 
 	
 	@Bean
