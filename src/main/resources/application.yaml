@@ -11,7 +11,11 @@ spring:
     console:
       path: /h2-console
       enabled: true
-
+  jpa:
+    #初始化延遲，解決沒有表格就插入資料的錯誤
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
 koda:
   interview-test:
     api-kengp3-root-url: 'https://kengp3.github.io/'
