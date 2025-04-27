@@ -1,46 +1,26 @@
 package com.koda.interview_test.model.dto;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
-public class CoindeskDTO {
-
-	private LocalDateTime updated;
+public class CoindeskNewDTO {
 	
-	private String currencyCode;
-	
-	private String currencyCodeZh;
-	
-	private String rate;
+	private String datatime;
 
-	public LocalDateTime getUpdated() {
-		return updated;
+	private List<CoindeskNewBpiDTO> coindeskNewBpiDtoList;
+
+	public String getDatatime() {
+		return datatime;
 	}
 
-	public void setUpdated(LocalDateTime updated) {
-		this.updated = updated;
+	public void setDatatime(String datatime) {
+		this.datatime = datatime;
 	}
 
-	public String getCurrencyCode() {
-		return currencyCode;
+	public List<CoindeskNewBpiDTO> getCoindeskNewBpiDtoList() {
+		return coindeskNewBpiDtoList;
 	}
 
-	public void setCurrencyCode(String currencyCode) {
-		this.currencyCode = currencyCode;
-	}
-
-	public String getCurrencyCodeZh() {
-		return currencyCodeZh;
-	}
-
-	public void setCurrencyCodeZh(String currencyCodeZh) {
-		this.currencyCodeZh = currencyCodeZh;
-	}
-
-	public String getRate() {
-		return rate;
-	}
-
-	public void setRate(String rate) {
-		this.rate = rate;
+	public void setCoindeskNewBpiDtoList(List<CoindeskNewBpiDTO> coindeskNewBpiDtoList) {
+		this.coindeskNewBpiDtoList = coindeskNewBpiDtoList;
 	}
 }

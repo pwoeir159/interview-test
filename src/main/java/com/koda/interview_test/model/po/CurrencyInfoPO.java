@@ -19,6 +19,17 @@ public class CurrencyInfoPO {
 	@Column(name = "description")
 	private String description;
 
+	public CurrencyInfoPO() {
+		super();
+	}
+
+	public CurrencyInfoPO(String currencyCode, String currencyNameZh, String description) {
+		super();
+		this.currencyCode = currencyCode;
+		this.currencyNameZh = currencyNameZh;
+		this.description = description;
+	}
+
 	public String getCurrencyCode() {
 		return currencyCode;
 	}
@@ -41,5 +52,11 @@ public class CurrencyInfoPO {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	@Override
+	public String toString() {
+		return "CurrencyInfoPO [currencyCode=" + currencyCode + ", currencyNameZh=" + currencyNameZh + ", description="
+				+ description + "]";
 	}
 }
