@@ -83,12 +83,28 @@ public class CurrencyInfoController {
 			@RequestParam(value = "currency_name_zh",required = false) String currency_name_zh) {
 		
 		try {
-			List<CurrencyInfoDTO> dtoList = 
-					currencyInfoService.getDataList(new CurrencyInfoDTO(currency_code, currency_name_zh));
-			ApiResponse<Object> apiResponse = this.setOkResponse(dtoList);
+			List<CurrencyInfoVO> voList = 
+					currencyInfoService.getDataList(new CurrencyInfoDTO(currency_code, currency_name_zh)).stream()
+					.map(dto -> Util.toVo(dto, new CurrencyInfoVO()))
+					.collect(Collectors.toList());
+			ApiResponse<Object> apiResponse = this.setOkResponse(voList);
 			return ResponseEntity.status(HttpStatus.OK).body(apiResponse);
 		} catch (Exception e) {
 			ApiResponse<Object> apiResponse = this.setInternalServerResponse(e, new CurrencyInfoDTO(currency_code, currency_name_zh));
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(apiResponse);
+		}
+	}
+	
+	@GetMapping(value = "/{currency_code}")
+	public ResponseEntity<Object> getCurrencyInfo(@PathVariable String currency_code) {
+		
+		try {
+			CurrencyInfoVO vo = Util.toVo(currencyInfoService.getData(new CurrencyInfoDTO(currency_code, null)),
+					new CurrencyInfoVO());
+			ApiResponse<Object> apiResponse = this.setOkResponse(vo);
+			return ResponseEntity.status(HttpStatus.OK).body(apiResponse);
+		} catch (Exception e) {
+			ApiResponse<Object> apiResponse = this.setInternalServerResponse(e, new CurrencyInfoDTO(currency_code, null));
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(apiResponse);
 		}
 	}
