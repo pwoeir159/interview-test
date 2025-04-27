@@ -2,6 +2,11 @@ server:
   port: 8797
   
 spring:
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
   datasource:
     url: 'jdbc:h2:mem:testdb'
     driver-class-name: org.h2.Driver

@@ -83,8 +83,6 @@ public class CurrencyInfoServiceImpl implements CurrencyInfoService{
 			if (dto.getDescription() != null) {
 			    po.setDescription(dto.getDescription());
 			}
-			
-			
 			repository.save(po);
 		}
 	}
