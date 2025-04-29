@@ -2,17 +2,13 @@ package com.koda.interview_test.util;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,12 +29,6 @@ public class Util {
 	private static final long BASE_RETRY_INTERVAL_MS = 1000L;
 	
 	public final static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-
-	public static final DateTimeFormatter YYYY_MM_DD = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-	
-	public static final DateTimeFormatter YYYYMMDD = DateTimeFormatter.ofPattern("yyyyMMdd");
-	
-	public final static DateTimeFormatter YYYYMMDD_HHMMSS = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
 
 	public static <T> List<T> replaceNullToList(List<T> list) {
 		if (list == null) {
@@ -82,43 +72,14 @@ public class Util {
 		return vo;
 	}
 	
-	public static LocalDateTime stringToLocalDateTimeNew(String string, String formatter) {
-		return LocalDateTime.parse(string, DateTimeFormatter.ofPattern(formatter));
-	}
-	
-    public static String localDateTimeToStringNew(LocalDateTime localDateTime, String formatter) {
-        return localDateTime.format(DateTimeFormatter.ofPattern(formatter));
-    }
-
 	public static LocalDateTime stringToLocalDateTime(String str) {
 		return LocalDateTime.parse(str, formatter);
 	}
-	
-    public static LocalDate stringToLocalDate(String str) {
-        LocalDate dateTime = LocalDate.parse(str, YYYYMMDD);
-        return dateTime;
-    }
-	
+
     public static String localDateTimeToString(LocalDateTime time) {
         String dateStr = time.format(formatter);
         return dateStr;
     }
-
-    public static String localDateToStringDate(LocalDate time) {
-        String dateStr = time.format(YYYYMMDD);
-        return dateStr;
-    }
-	
-	public static String localDateToStringDateTime(LocalDate time) {
-		String dateStr = time.format(YYYYMMDD_HHMMSS);
-		return dateStr;
-	}
-
-	public static Set<String> sortSetToString(String str) {
-	   return Arrays.stream(Optional.ofNullable(str).orElse("").split(","))
-        .map(String :: trim)
-        .collect(Collectors.toSet());
-	}
 	
 	 // 通用的 API 调用方法
     public static <T> List<T> callListApi(String method, Object params, Class<T> dtoClass, Function<T, Call<List<T>>> apiCall) {
