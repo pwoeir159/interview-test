@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.koda.interview_test.model.dto.CurrencyInfoDTO;
 import com.koda.interview_test.model.vo.CurrencyInfoVO;
-import com.koda.interview_test.service.CurrencyInfoService;
+import com.koda.interview_test.service.impl.CurrencyInfoServiceImpl;
 import com.koda.interview_test.model.ApiResponse;
 import com.koda.interview_test.util.Util;
 
@@ -28,7 +28,7 @@ import com.koda.interview_test.util.Util;
 public class CurrencyInfoController {
 
 	@Autowired
-	private CurrencyInfoService currencyInfoService;
+	private CurrencyInfoServiceImpl currencyInfoService;
 	
 	@PostMapping
 	public ResponseEntity<Object> postCurrencyInfo(@RequestBody List<CurrencyInfoVO> voList) {
