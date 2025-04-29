@@ -1,0 +1,26 @@
+server:
+  port: 8797
+  
+spring:
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  datasource:
+    url: 'jdbc:h2:mem:testdb'
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  h2:
+    console:
+      path: /h2-console
+      enabled: true
+  jpa:
+    #初始化延遲，解決沒有表格就插入資料的錯誤
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
+koda:
+  interview-test:
+    api-kengp3-root-url: 'https://kengp3.github.io/'
