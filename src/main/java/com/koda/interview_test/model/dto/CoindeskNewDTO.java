@@ -1,26 +1,37 @@
 package com.koda.interview_test.model.dto;
 
-import java.util.List;
+import com.koda.interview_test.model.vo.CoindeskNewTimeVO;
+import com.koda.interview_test.model.vo.CoindeskNewVO;
+import com.koda.interview_test.util.Util;
 
 public class CoindeskNewDTO {
 	
-	private String datatime;
+	private CoindeskNewTimeDTO coindeskNewTimeDto;
 
-	private List<CoindeskNewBpiDTO> coindeskNewBpiDtoList;
+	private CoindeskNewBpiDTO coindeskNewBpiDto;
 
-	public String getDatatime() {
-		return datatime;
+	public CoindeskNewTimeDTO getCoindeskNewTimeDto() {
+		return coindeskNewTimeDto;
 	}
 
-	public void setDatatime(String datatime) {
-		this.datatime = datatime;
+	public void setCoindeskNewTimeDto(CoindeskNewTimeDTO coindeskNewTimeDto) {
+		this.coindeskNewTimeDto = coindeskNewTimeDto;
 	}
 
-	public List<CoindeskNewBpiDTO> getCoindeskNewBpiDtoList() {
-		return coindeskNewBpiDtoList;
+	public CoindeskNewBpiDTO getCoindeskNewBpiDto() {
+		return coindeskNewBpiDto;
 	}
 
-	public void setCoindeskNewBpiDtoList(List<CoindeskNewBpiDTO> coindeskNewBpiDtoList) {
-		this.coindeskNewBpiDtoList = coindeskNewBpiDtoList;
+	public void setCoindeskNewBpiDto(CoindeskNewBpiDTO coindeskNewBpiDto) {
+		this.coindeskNewBpiDto = coindeskNewBpiDto;
 	}
+	
+	public CoindeskNewVO convertVo() {
+		CoindeskNewVO vo = new CoindeskNewVO();
+		vo.setCoindeskNewTimeVo(Util.toVo(this.coindeskNewTimeDto, new CoindeskNewTimeVO()));
+		vo.setCoindeskNewBpiVo(this.coindeskNewBpiDto.convertVo());
+		
+		return vo;
+	}
+
 }

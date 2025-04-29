@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.koda.interview_test.model.dto.CoindeskNewDTO;
+import com.koda.interview_test.model.vo.CoindeskNewVO;
 import com.koda.interview_test.service.CoindeskNewService;
 
 @RestController
@@ -16,7 +16,7 @@ public class CoindeskNewController {
 	private CoindeskNewService coindeskNewService;
 
 	@GetMapping
-	public CoindeskNewDTO getData() {
-		return coindeskNewService.getData();
+	public CoindeskNewVO getData() {
+		return coindeskNewService.getData().convertVo();
 	}
 }
