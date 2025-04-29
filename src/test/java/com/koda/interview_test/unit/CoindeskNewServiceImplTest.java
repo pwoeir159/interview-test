@@ -2,9 +2,8 @@ package com.koda.interview_test.unit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import com.koda.interview_test.api.model.CoindeskBpi;
 import com.koda.interview_test.api.model.CoindeskBpiEur;
@@ -13,13 +12,16 @@ import com.koda.interview_test.api.model.CoindeskBpiUsd;
 import com.koda.interview_test.api.model.CoindeskTime;
 import com.koda.interview_test.model.dto.CoindeskNewBpiDTO;
 import com.koda.interview_test.model.dto.CoindeskNewTimeDTO;
-import com.koda.interview_test.service.CoindeskNewService;
+import com.koda.interview_test.service.impl.CoindeskNewServiceImpl;
 
-@SpringBootTest
 public class CoindeskNewServiceImplTest {
 	
-	@Autowired
-	private CoindeskNewService service;
+    private CoindeskNewServiceImpl service;
+
+    @BeforeEach
+    void setUp() {
+        service = new CoindeskNewServiceImpl();
+    }
 	
 	@Test
 	void testSetNewTimeAndformat() {
