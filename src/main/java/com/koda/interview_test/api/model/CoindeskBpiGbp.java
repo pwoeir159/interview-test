@@ -19,6 +19,19 @@ public class CoindeskBpiGbp {
 	@JsonProperty(value = "rate_float")
 	private Double rateFloat;
 
+	public CoindeskBpiGbp() {
+		super();
+	}
+
+	public CoindeskBpiGbp(String code, String symbol, String rate, String description, Double rateFloat) {
+		super();
+		this.code = code;
+		this.symbol = symbol;
+		this.rate = rate;
+		this.description = description;
+		this.rateFloat = rateFloat;
+	}
+
 	public String getCode() {
 		return code;
 	}
