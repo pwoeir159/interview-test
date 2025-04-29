@@ -36,5 +36,4 @@ public class CoindeskTime {
 	public void setUpdateduk(String updateduk) {
 		this.updateduk = updateduk;
 	}
-
 }

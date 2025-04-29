@@ -44,12 +44,6 @@ public class RetrofitFactory {
 	}
 	
 	private static synchronized Retrofit getRetrofit(String baseUrl, Factory factory){
-		/*
-		//設定Retrofit Logger
-		//Create HttpLoggingInterceptor
-		HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-		logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-		*/
 
 		if(builderMap.containsKey(baseUrl)){
 			return builderMap.get(baseUrl);
